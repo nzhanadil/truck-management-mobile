@@ -8,8 +8,7 @@ import { Button } from 'react-native-paper'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import db, {auth} from '../../config/firebase'
-import Loading from '../../components/Loading'
-import CustomInput from '../../components/CustomInput'
+import { CustomInput, Loading } from '../../components'
 import { setUser } from '../../store/usersSlice'
 
 const schema = z.object({

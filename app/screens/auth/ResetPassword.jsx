@@ -7,7 +7,7 @@ import { Button, Dialog, Portal } from 'react-native-paper'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import {auth} from '../../config/firebase'
-import CustomInput from '../../components/CustomInput'
+import { CustomInput } from '../../components'
 
 const schema = z.object({
     email: z.string().email()
