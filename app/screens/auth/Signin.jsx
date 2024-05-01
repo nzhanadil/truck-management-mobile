@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Text, View } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { z } from 'zod'
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
@@ -17,7 +17,7 @@ const schema = z.object({
     password: z.string().min(8, "Please enter your password.")
 })
 
-const Signin = () => {
+const Signin = ({navigation}) => {
     const dispatch = useDispatch()
     const [hidePassword, setHidePassword] = useState(true)
     const [isLoading, setIsLoading] = useState(false)
@@ -45,7 +45,7 @@ const Signin = () => {
                 const userDoc = await db.collection('users').doc(user.email).get();
                 const userData = userDoc.data();
                 dispatch(setUser(userData));
-                console.log(user)
+                navigation.navigate('home')
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
@@ -57,7 +57,7 @@ const Signin = () => {
 
   return (
     <>{isLoading ? <Loading/> :
-    <View className="flex flex-col justify-center w-[100vw] h-[100vh] bg-primary-4">
+    <ScrollView contentContainerStyle={{flex: 1,justifyContent: 'center'}} className='bg-primary-4'>
         <View className='w-80 bg-white items-center mx-auto rounded-md py-5 shadow-lg flex'>
             <CustomInput
                 name='email'
@@ -81,10 +81,26 @@ const Signin = () => {
                 mode='contained'
                 className='bg-primary-1 w-64 mt-5'
             >
-                Sign in
-            </Button> 
+                SIGN IN
+            </Button>
+
+            <View className='flex flex-row gap-1 mt-5'>
+                <Text>Don't have an account?</Text>
+                <Text
+                    className='text-primary-1 font-bold' 
+                    onPress={() => navigation.navigate('signup')}
+                >
+                    SIGN UP
+                </Text>
+            </View>
+            <Text
+                className='text-primary-1 mt-2 underline'
+                onPress={() => navigation.navigate('resetpassword')}
+            >
+                Forgot password?
+            </Text>
         </View>
-    </View>
+    </ScrollView>  
     }</>
   )
 }
