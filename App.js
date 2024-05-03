@@ -1,9 +1,10 @@
 import { Provider } from 'react-redux';
 import { PaperProvider } from 'react-native-paper';
+import { Platform, SafeAreaView, StatusBar } from 'react-native';
 
 import { store } from './app/store/store'
 import Main from './app/Main';
-import { Platform, SafeAreaView, StatusBar } from 'react-native';
+import { Alert } from './app/components';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <PaperProvider>
         <SafeAreaView style={{paddingTop: Platform.OS === 'android' && StatusBar.currentHeight}} />
         <Main />
+        <Alert />
       </PaperProvider>
     </Provider>
   );

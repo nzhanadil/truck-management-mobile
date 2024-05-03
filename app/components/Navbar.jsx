@@ -2,11 +2,11 @@ import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import { Platform } from 'react-native';
 import { Trucks } from '../screens';
+import colors from '../config/colors';
 
 const DashboardRoute = () => <Text>DashboardRoute</Text>;
 const ManagementRoute = () => <Text>ManagementRoute</Text>;
 const DriversRoute = () => <Text>DriversRoute</Text>;
-const TrucksRoute = () => <Text>TrucksRoute</Text>;
 const TrailersRoute = () => <Text>TrailersRoute</Text>;
 const SettingsRoute = () => <Text>SettingsRoute</Text>;
 
@@ -32,10 +32,16 @@ const Navbar = () => {
 
   return (
     <BottomNavigation
-      barStyle={{height: Platform.OS === 'ios' ? 90 : 80}}
+      barStyle={{
+        height: Platform.OS === 'ios' && 90, 
+        backgroundColor: colors.primary[1],
+      }}
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
+      inactiveColor={colors.white}
+      activeColor={colors.primary[3]}
+      theme={{colors: {secondaryContainer: colors.white}}}
     />
   );
 };

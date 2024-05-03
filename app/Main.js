@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Signin, Signup, ResetPassword } from './screens';
 import { Navbar } from './components';
+import { Dimensions, Platform, StatusBar } from 'react-native';
 
 const Stack = createNativeStackNavigator()
 

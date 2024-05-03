@@ -1,8 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { DataTable } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrucks } from '../../store/trucksSlice';
+import colors from '../../config/colors';
+import { Dimensions } from 'react-native';
 
 const TrucksList = ({ navigation }) => {
     const dispatch = useDispatch()
@@ -41,8 +42,10 @@ const TrucksList = ({ navigation }) => {
         }
     }, [data, searchText])
 
+    const screenSize = Dimensions.get('window').height
+
   return (
-    <DataTable>
+    <DataTable className={`h-[75vh]`}>
       <DataTable.Header>
         <DataTable.Title>ID</DataTable.Title>
         <DataTable.Title>Make</DataTable.Title>
@@ -68,8 +71,11 @@ const TrucksList = ({ navigation }) => {
         numberOfItemsPerPageList={numberOfItemsPerPageList}
         numberOfItemsPerPage={itemsPerPage}
         onItemsPerPageChange={onItemsPerPageChange}
-        showFastPaginationControls
         selectPageDropdownLabel={'Rows per page'}
+        className='absolute bottom-0'
+        paginationControlRippleColor={colors.primary[1]}
+        theme={{colors: {elevation: {level2: colors.white}}}}
+        style={{color: 'green'}}
       />
     </DataTable>
   );
