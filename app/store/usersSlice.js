@@ -77,10 +77,10 @@ export const usersSlice = createSlice({
       state.userDialog = { type: '', isOpen: false, data: null }
     },
     openEditUserDialog: (state, action) => {
-      state.truckDialog = { type: 'edit', isOpen: true, data: action.payload }
+      state.userDialog = { type: 'edit', isOpen: true, data: action.payload }
     },
     openNewUserDialog: (state, action) => {
-      state.truckDialog = { type: 'new', isOpen: true, data: action.payload }
+      state.userDialog = { type: 'new', isOpen: true, data: action.payload }
     },
     setSearchText: (state, action) => {
       state.searchText = action.payload;

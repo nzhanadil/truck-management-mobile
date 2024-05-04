@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { Controller } from 'react-hook-form'
 import { Text, View } from 'react-native'
 import DropDown from 'react-native-paper-dropdown';
+
 import colors from '../config/colors';
 
-const CustomDropDown = ({name, control, label, error, icon, list }) => {
-    const [showDropDown, setShowDropDown] = useState(false);
+const CustomDropDown = ({name, control, label, error, icon, list, disabled }) => {
+  const [showDropDown, setShowDropDown] = useState(false);
+  
   return (
     <View className='w-64 mt-5'>
         <Controller
@@ -13,10 +15,14 @@ const CustomDropDown = ({name, control, label, error, icon, list }) => {
             control={control}
             render={({ field: {value, onChange, onBlur} }) => (
                 <DropDown
+                    inputProps={{disabled: disabled}}
+                    disabled={true}
                     label={label}
                     mode="outlined"
                     visible={showDropDown}
-                    showDropDown={() => setShowDropDown(true)}
+                    showDropDown={() => {
+                        !disabled && setShowDropDown(true)
+                    }}
                     onDismiss={() => setShowDropDown(false)}
                     value={value}
                     setValue={onChange}

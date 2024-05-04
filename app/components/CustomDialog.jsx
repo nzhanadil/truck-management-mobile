@@ -14,7 +14,7 @@ const CustomDialog = () => {
 
   const handleYes = () => {
     dispatch(handleConfirm(data))
-    dispatch(setAlert({isOpen: true, message: alertMessage, type: 'Success'}))
+    if(alertMessage) dispatch(setAlert({isOpen: true, message: alertMessage, type: 'Success'}))
     if(navigateBack) navigation.goBack()
     handleCancel()
   }
