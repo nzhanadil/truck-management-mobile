@@ -6,7 +6,6 @@ import colors from '../config/colors'
 
 const Alert = () => {
     const { isOpen, message, type } = useSelector(store => store.app.alert)
-    console.log(message, '.....')
     const dispatch = useDispatch()
   return (
     <Portal>

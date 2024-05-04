@@ -98,6 +98,7 @@ const TruckDialog = () => {
                 control={control}
                 error={errors?.id?.message}
                 icon='identifier'
+                disabled={type==='edit'}
               />
               <CustomInput
                 name="make"

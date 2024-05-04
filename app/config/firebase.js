@@ -21,24 +21,5 @@ const auth = getAuth(firebaseApp)
 const db = firebase.firestore();
 const storageDb = getStorage(firebaseApp);
 
-// const dispatch = useDispatch()
-
-// onAuthStateChanged(auth, async (user) => {
-//   dispatch(setIsLoading(true))
-//   if (user) {
-//     try {
-//         const userDoc = await db.collection('users').doc(user.email).get();
-//         const userData = userDoc.data();
-//         dispatch(setUser(userData));
-//         console.log(userData)
-//     } catch (error) {
-//         console.error("Error fetching user data:", error);
-//     }
-//   }else {
-//     dispatch(setUser(null));
-//   }
-//   dispatch(setIsLoading(false))
-// });
-
 export { auth, storageDb }
 export default db

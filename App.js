@@ -1,18 +1,20 @@
 import { Provider } from 'react-redux';
 import { PaperProvider } from 'react-native-paper';
-import { Platform, SafeAreaView, StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import { store } from './app/store/store'
 import Main from './app/Main';
-import { Alert } from './app/components';
+import { Alert, CustomDialog } from './app/components';
 
 export default function App() {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <SafeAreaView style={{paddingTop: Platform.OS === 'android' && StatusBar.currentHeight}} />
-        <Main />
-        <Alert />
+        <NavigationContainer>
+          <Main />
+          <Alert />
+          <CustomDialog />
+        </NavigationContainer>
       </PaperProvider>
     </Provider>
   );

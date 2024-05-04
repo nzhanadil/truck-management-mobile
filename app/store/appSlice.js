@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isLoading: false,
-    alert: { isOpen: false, message: '', type: '' }
+    alert: { isOpen: false, message: '', type: '' },
+    dialog: { isOpen: false, message: '', alertMessage: '', handleConfirm: () => {}, data: null, navigateBack: false }
 }
 
 const appSlice = createSlice({
@@ -14,12 +15,16 @@ const appSlice = createSlice({
         },
         setAlert: (state, action) => {
             state.alert = action.payload
+        },
+        setDialog: (state, action) => {
+            state.dialog = action.payload
         }
     }
 })
 
 export const {
     setIsLoading,
-    setAlert
+    setAlert,
+    setDialog,
 } = appSlice.actions
 export default appSlice.reducer

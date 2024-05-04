@@ -1,15 +1,19 @@
 import CustomInput from "./CustomInput";
 import Loading from "./Loading";
-import Navbar from "./Navbar";
 import Header from "./Header";
 import CustomDropDown from "./CustomDropDown";
 import Alert from "./Alert";
+import BottomNavigation from "./BottomNavigation";
+import CustomIconButton from "./CustomIconButton";
+import CustomDialog from "./CustomDialog";
 
 export {
     CustomInput,
     Loading,
-    Navbar,
     Header,
     CustomDropDown,
-    Alert
+    Alert,
+    BottomNavigation,
+    CustomIconButton,
+    CustomDialog
 }

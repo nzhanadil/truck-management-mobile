@@ -3,22 +3,17 @@ import { DataTable } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTrucks } from '../../store/trucksSlice';
 import colors from '../../config/colors';
-import { Dimensions } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const TrucksList = ({ navigation }) => {
+const TrucksList = () => {
+    const navigation = useNavigation()
     const dispatch = useDispatch()
     const { data, searchText } = useSelector(store => store.trucks)
-    const { currentUser } = useSelector(store => store.users)
     const [ filteredData, setFilteredData ] = useState([])
-    const [ selectedRow, setSelectedRow ] = useState(null)
-    const [anchorEl, setAnchorEl] = useState(null);
-    const [confirmationMessage, setConfirmationMessage] = useState('');
-
     const [page, setPage] = useState(0)
     const [numberOfItemsPerPageList] = useState([5, 10, 15]);
-    const [itemsPerPage, onItemsPerPageChange] = useState(numberOfItemsPerPageList[0]);
-
-
+    const [itemsPerPage, onItemsPerPageChange] = useState(numberOfItemsPerPageList[1]);
     const from = page * itemsPerPage;
     const to = Math.min((page + 1) * itemsPerPage, filteredData.length);
 
@@ -33,7 +28,7 @@ const TrucksList = ({ navigation }) => {
     useEffect(() => {
         const getFilteredArray = (data, searchText) => {
             let trucks = data;
-            if( currentUser.role === 'driver' ) trucks = data.filter(truck => truck.status === 'active')
+            // if( currentUser.role === 'driver' ) trucks = data.filter(truck => truck.status === 'active')
             if(searchText.trim().length === 0) return trucks
             return trucks.filter(truck => (truck.id+" "+truck.make+" "+truck.model).toLowerCase().includes(searchText.trim()))
         }
@@ -42,26 +37,27 @@ const TrucksList = ({ navigation }) => {
         }
     }, [data, searchText])
 
-    const screenSize = Dimensions.get('window').height
-
   return (
-    <DataTable className={`h-[75vh]`}>
+    <DataTable className={`h-[85%] z-10`}>
       <DataTable.Header>
         <DataTable.Title>ID</DataTable.Title>
         <DataTable.Title>Make</DataTable.Title>
         <DataTable.Title>Model</DataTable.Title>
         <DataTable.Title>Plate</DataTable.Title>
       </DataTable.Header>
-      {console.log(filteredData.map(el => el.id))}
 
-      {filteredData.slice(from, to).map((item) => (
-        <DataTable.Row key={item.id} >
-          <DataTable.Cell>{item.id}</DataTable.Cell>
-          <DataTable.Cell>{item.make}</DataTable.Cell>
-          <DataTable.Cell>{item.model}</DataTable.Cell>
-          <DataTable.Cell>{item.plate_number}</DataTable.Cell>
-        </DataTable.Row>
-      ))}
+      <View className='h-[85%]'>
+        <ScrollView>
+        {filteredData.slice(from, to).map((item) => (
+          <DataTable.Row key={item.id} onPress={() => navigation.navigate('Truck', {id: item.id})}>
+            <DataTable.Cell>{item.id}</DataTable.Cell>
+            <DataTable.Cell>{item.make}</DataTable.Cell>
+            <DataTable.Cell>{item.model}</DataTable.Cell>
+            <DataTable.Cell>{item.plate_number}</DataTable.Cell>
+          </DataTable.Row>
+        ))}
+        </ScrollView>
+      </View>
 
       <DataTable.Pagination
         page={page}
@@ -75,7 +71,6 @@ const TrucksList = ({ navigation }) => {
         className='absolute bottom-0'
         paginationControlRippleColor={colors.primary[1]}
         theme={{colors: {elevation: {level2: colors.white}}}}
-        style={{color: 'green'}}
       />
     </DataTable>
   );

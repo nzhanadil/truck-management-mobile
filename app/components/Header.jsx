@@ -9,7 +9,7 @@ const Header = ({title, searchText, setSearchText, openDialog}) => {
     const [ search, setSearch ] = useState(false)
 
     return (
-        <View className='flex flex-row justify-between px-5 py-1 bg-primary-1 items-center h-[8vh]'>
+        <View className='flex flex-row justify-between px-5 py-1 bg-primary-1 items-center h-[10%]'>
             { search ? 
             <View>
                 <TextInput

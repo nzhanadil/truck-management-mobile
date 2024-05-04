@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import db from '../config/firebase';
 import { doc, updateDoc, setDoc, deleteDoc, collection, getDocs, getDoc} from 'firebase/firestore'
+import { setAlert } from './appSlice';
 
 export const getTrucks = createAsyncThunk(
   'trucks/getTruck', 

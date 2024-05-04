@@ -5,7 +5,7 @@ import { TextInput } from 'react-native-paper'
 
 import colors from '../config/colors'
 
-const CustomInput = ({name, control, label, secureTextEntry, error, icon, handleClick }) => {
+const CustomInput = ({name, control, label, secureTextEntry, error, icon, handleClick, disabled }) => {
   return (
     <View>
         <Controller
@@ -17,6 +17,7 @@ const CustomInput = ({name, control, label, secureTextEntry, error, icon, handle
                     onChangeText={onChange}
                     onBlur={onBlur}
                     className="w-64 mt-5"
+                    disabled={disabled}
                     label={label}
                     activeOutlineColor={colors.primary[1]}
                     mode='outlined'
