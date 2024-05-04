@@ -10,6 +10,7 @@ const TrucksList = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const { data, searchText } = useSelector(store => store.trucks)
+    const { currentUser } = useSelector(store => store.users)
     const [ filteredData, setFilteredData ] = useState([])
     const [page, setPage] = useState(0)
     const [numberOfItemsPerPageList] = useState([5, 10, 15]);
@@ -28,7 +29,7 @@ const TrucksList = () => {
     useEffect(() => {
         const getFilteredArray = (data, searchText) => {
             let trucks = data;
-            // if( currentUser.role === 'driver' ) trucks = data.filter(truck => truck.status === 'active')
+            if( currentUser.role === 'driver' ) trucks = data.filter(truck => truck.status === 'active')
             if(searchText.trim().length === 0) return trucks
             return trucks.filter(truck => (truck.id+" "+truck.make+" "+truck.model).toLowerCase().includes(searchText.trim()))
         }

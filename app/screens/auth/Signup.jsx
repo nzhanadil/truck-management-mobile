@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { ScrollView, Text, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { z } from 'zod'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth'
 import { Button } from 'react-native-paper'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -57,7 +57,6 @@ const Signup = ({navigation}) => {
                 const userDoc = await db.collection('users').doc(user.email).get();
                 const userData = userDoc.data();
                 dispatch(setUser(userData));
-                navigation.navigate('home')
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }

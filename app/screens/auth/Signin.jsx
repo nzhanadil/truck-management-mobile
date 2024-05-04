@@ -44,7 +44,6 @@ const Signin = ({navigation}) => {
                 const userDoc = await db.collection('users').doc(user.email).get();
                 const userData = userDoc.data();
                 dispatch(setUser(userData));
-                navigation.navigate('home')
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
