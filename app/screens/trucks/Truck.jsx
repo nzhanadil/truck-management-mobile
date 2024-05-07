@@ -81,11 +81,7 @@ const Truck = ({route, navigation}) => {
           onValueChange={setValue}
           theme={{colors: {secondaryContainer: colors.primary[3]}}}
           className='w-[90%] mt-3'
-          buttons={[
-            { value: 'details', label: 'Details', icon: 'card-account-details-outline' },
-            { value: 'history', label: 'History', icon: 'history' },
-            { value: 'documents', label: 'Documents', icon: 'file-document-multiple-outline' }
-          ]}
+          buttons={options}
         />
         <View>
           {value === 'details' && <TruckDetails {...truckData} />}

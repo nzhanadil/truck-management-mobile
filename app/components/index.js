@@ -15,5 +15,5 @@ export {
     Alert,
     BottomNavigation,
     CustomIconButton,
-    CustomDialog
+    CustomDialog,
 }

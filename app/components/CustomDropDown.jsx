@@ -16,7 +16,7 @@ const CustomDropDown = ({name, control, label, error, icon, list, disabled }) =>
             render={({ field: {value, onChange, onBlur} }) => (
                 <DropDown
                     inputProps={{disabled: disabled}}
-                    disabled={true}
+                    disabled={disabled}
                     label={label}
                     mode="outlined"
                     visible={showDropDown}
