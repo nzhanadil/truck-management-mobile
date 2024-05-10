@@ -1,10 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import {getAuth, onAuthStateChanged} from "firebase/auth"
+import { getAuth } from "firebase/auth"
 import { getStorage } from "firebase/storage";
-import { setUser } from '../store/usersSlice';
-import { useDispatch } from 'react-redux';
-import { setIsLoading } from '../store/appSlice';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPCA96ILrQImpo19ODLA3rPa98-rBkPC8",

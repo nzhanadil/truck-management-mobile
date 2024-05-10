@@ -6,6 +6,8 @@ import Alert from "./Alert";
 import BottomNavigation from "./BottomNavigation";
 import CustomIconButton from "./CustomIconButton";
 import CustomDialog from "./CustomDialog";
+import UnassignDialog from "./UnassignDialog";
+import CameraComponent from "./CameraComponent";
 
 export {
     CustomInput,
@@ -16,4 +18,6 @@ export {
     BottomNavigation,
     CustomIconButton,
     CustomDialog,
+    UnassignDialog,
+    CameraComponent
 }

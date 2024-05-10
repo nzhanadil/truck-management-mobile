@@ -36,10 +36,10 @@ const Home = () => {
         />
         <View>
           {value === 'dashboard' &&
-          currentUser.role === 'driver' && <DriverDashboard truck={currentUser.truck} trailer={currentUser.trailer}/> 
-          }
-          {value === 'dashboard' &&
-          currentUser.role === 'driver' && <ManagerDashboard /> 
+          currentUser.role === 'driver' ? 
+          <DriverDashboard truck={currentUser.truck} trailer={currentUser.trailer}/> 
+          :
+          <ManagerDashboard />
           }
           {value === 'details' && <UserDetails {...currentUser} />}
           {value === 'trucks' && <UserHistory history={currentUser?.trucksHistory} transport='Truck'/>}
