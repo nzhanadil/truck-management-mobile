@@ -1,14 +1,18 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 import { Button } from 'react-native-paper'
+import { useDispatch } from 'react-redux'
+import { setAssignDialog } from '../../store/appSlice'
 
 const Card = ({title, transport}) => {
+  const dispatch = useDispatch()
+
   const handleClick = () => {
     if(transport) {
         if(title === 'Truck') console.log('unassign truck')
         if(title === 'Trailer') console.log('unassign trailer')
     } else {
-        if(title === 'Truck') console.log('assign truck')
+        if(title === 'Truck') dispatch(setAssignDialog( { isOpen: true, id: '', type: 'truck', assignTo: 'driver' }))
         if(title === 'Trailer') console.log('assign trailer')
     }
   }

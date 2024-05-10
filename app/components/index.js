@@ -8,6 +8,7 @@ import CustomIconButton from "./CustomIconButton";
 import CustomDialog from "./CustomDialog";
 import UnassignDialog from "./UnassignDialog";
 import CameraComponent from "./CameraComponent";
+import AssignDialog from "./AssignDialog";
 
 export {
     CustomInput,
@@ -19,5 +20,6 @@ export {
     CustomIconButton,
     CustomDialog,
     UnassignDialog,
-    CameraComponent
+    CameraComponent,
+    AssignDialog
 }

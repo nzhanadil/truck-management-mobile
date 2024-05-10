@@ -5,6 +5,7 @@ import { getTrucks } from '../../store/trucksSlice';
 import colors from '../../config/colors';
 import { ScrollView, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { getUsers } from '../../store/usersSlice';
 
 const TrucksList = () => {
     const navigation = useNavigation()
@@ -24,6 +25,7 @@ const TrucksList = () => {
 
     useEffect(() => {
         dispatch(getTrucks())
+        dispatch(getUsers())
     }, [])
 
     useEffect(() => {

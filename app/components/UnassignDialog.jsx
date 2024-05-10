@@ -32,7 +32,7 @@ const UnassignDialog = () => {
     setUser('')
     setUrls([])
     setImages([])
-  }, [])
+  }, [isOpen])
 
   const getUserHistory = (userId) => {
     // this logic needs to be changes when will start assigning based on the full name
@@ -49,7 +49,7 @@ const UnassignDialog = () => {
     const transport = (type === 'truck' ? trucks : trailers).data.filter(transport => transport.id === id)[0]
     const history = [...transport.history]
 
-    const lastHistory = {...history[history.length - 1], endDate: getCurrentDate()}
+    const lastHistory = {...history[history.length - 1], endDate: getCurrentDate(), images: urls}
     history[history.length -1] = lastHistory
 
     setUser(lastHistory.user)
@@ -65,7 +65,7 @@ const UnassignDialog = () => {
     const updatedUser = { email: user, [type]: '', [type === 'truck' ? 'trucksHistory' : 'trailersHistory']: userHistory }
 
     //type === 'truck' ? dispatch(updateTruck(updatedTransport)) : dispatch(updateTrailer(updatedTransport))
-    dispatch(updateUser(updateUser))
+    dispatch(updateUser(updatedUser))
     dispatch(updateTruck(updatedTransport))
 
     const message = `${type === 'truck' ? 'Truck' : 'Trailer'} ${id} is successfully unassigned from ${email}!`

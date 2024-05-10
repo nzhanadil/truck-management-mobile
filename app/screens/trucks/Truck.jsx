@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import TruckDetails from './TruckDetails'
 import TruckHistory from './TruckHistory'
 import TruckDocuments from './TruckDocuments'
-import { setDialog } from '../../store/appSlice'
+import { setAssignDialog, setDialog } from '../../store/appSlice'
 
 const Truck = ({route, navigation}) => {
   const dispatch = useDispatch()
@@ -43,7 +43,7 @@ const Truck = ({route, navigation}) => {
   }
 
   const handleAssign = () => {
-    console.log("handleAssign")
+    dispatch(setAssignDialog({isOpen: true, type: 'truck', id: id, assignTo: 'transport'}))
     setVisible(false)
   }
 
@@ -69,7 +69,12 @@ const Truck = ({route, navigation}) => {
             >
               <Menu.Item onPress={handleDelete} title="Delete" trailingIcon='delete-outline'/>
               <Menu.Item onPress={handleEdit} title="Edit" trailingIcon='pencil-outline'/>
-              <Menu.Item onPress={handleAssign} title="Assign" trailingIcon='clipboard-account-outline'/>
+              <Menu.Item 
+                disabled={truckData.status === 'assigned' || truckData.status === 'out of service'} 
+                onPress={handleAssign} 
+                title="Assign" 
+                trailingIcon='clipboard-account-outline'
+              />
             </Menu>
           </View>
 

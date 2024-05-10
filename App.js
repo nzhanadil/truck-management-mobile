@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { store } from './app/store/store'
 import Main from './app/Main';
-import { Alert, CustomDialog, UnassignDialog } from './app/components';
+import { Alert, AssignDialog, CustomDialog, UnassignDialog } from './app/components';
 
 export default function App() {
   return (
@@ -15,6 +15,7 @@ export default function App() {
           <Alert />
           <CustomDialog />
           <UnassignDialog />
+          <AssignDialog />
         </NavigationContainer>
       </PaperProvider>
     </Provider>

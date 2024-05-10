@@ -5,6 +5,7 @@ const initialState = {
     alert: { isOpen: false, message: '', type: '' },
     dialog: { isOpen: false, message: '', alertMessage: '', handleConfirm: () => {}, data: null, navigateBack: false },
     unassignDialog: { isOpen: false, id: '', type: '' },
+    assignDialog: { isOpen: false, id: '', type: '', assignTo: '' }
 }
 
 const appSlice = createSlice({
@@ -22,6 +23,9 @@ const appSlice = createSlice({
         },
         setUnassignDialog: (state, action) => {
             state.unassignDialog = action.payload
+        },
+        setAssignDialog: (state, action) => {
+            state.assignDialog = action.payload
         }
     }
 })
@@ -31,5 +35,6 @@ export const {
     setAlert,
     setDialog,
     setUnassignDialog,
+    setAssignDialog
 } = appSlice.actions
 export default appSlice.reducer
